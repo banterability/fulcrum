@@ -12,7 +12,44 @@
   <script src="vendor/underscore-min.js"></script>
   <script src="api_response.json"></script>
   <script>
-    
+    var parentEl, storiesByAuthor, buildListForOwner;
+
+    buildListForOwner = function(owner, stories){
+      var container, header, list;
+      container = document.createElement('div');
+      container.classList.add('story-list');
+
+      header = document.createElement('p');
+      header.textContent = "" + owner + "'s Stories:";
+
+      list = document.createElement('ul');
+      stories.forEach(function(story){
+        var listItem;
+        listItem = document.createElement('li');
+        listItem.classList.add(story.type);
+        listItem.textContent = story.title;
+        list.appendChild(listItem);
+      });
+
+      container.appendChild(header);
+      container.appendChild(list);
+
+      return container;
+    };
+
+    parentEl = document.getElementById('main');
+
+    storiesByAuthor = _.groupBy(storyData.stories, function(story){
+      return story.author.name;
+    });
+
+    for (var property in storiesByAuthor){
+      if (storiesByAuthor.hasOwnProperty(property)) {
+        parentEl.appendChild(
+          buildListForOwner(property, storiesByAuthor[property])
+        );
+      }
+    }
   </script>
 </body>
 </html>

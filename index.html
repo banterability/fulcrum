@@ -33,6 +33,25 @@
   <script src="vendor/backbone-min.js"></script>
 
   <script src="stub_api_response.json"></script>
+
+  <script>
+    var StoryModel, StoryCollection;
+    StoryModel = Backbone.Model.extend({});
+    StoryCollection = Backbone.Collection.extend({
+      model: StoryModel
+    });
+
+    stories = new StoryCollection;
+    storyData.stories.forEach(function(story){
+      stories.add({
+        id: story.id,
+        title: story.title,
+        type: story.type,
+        author: story.author.name,
+        authorId: story.author.id
+      });
+    });
+  </script>
   <script>
     var parentEl, storiesByAuthor, buildListForOwner;
 

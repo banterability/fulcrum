@@ -66,8 +66,8 @@
       stories.forEach(function(story){
         var listItem;
         listItem = document.createElement('li');
-        listItem.classList.add(story.type);
-        listItem.textContent = story.title;
+        listItem.classList.add(story.get('type'));
+        listItem.textContent = story.get('title');
         list.appendChild(listItem);
       });
 
@@ -79,9 +79,7 @@
 
     parentEl = document.getElementById('main');
 
-    storiesByAuthor = _.groupBy(storyData.stories, function(story){
-      return story.author.name;
-    });
+    storiesByAuthor = stories.groupBy('author');
 
     for (var property in storiesByAuthor){
       if (storiesByAuthor.hasOwnProperty(property)) {

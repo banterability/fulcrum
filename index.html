@@ -34,13 +34,16 @@
   <script src="stub_api_response.json"></script>
 
   <script>
-    var StoryModel, StoryCollection;
+    var StoryModel, StoryCollection, stories;
+
     StoryModel = Backbone.Model.extend({});
+
     StoryCollection = Backbone.Collection.extend({
       model: StoryModel
     });
 
     stories = new StoryCollection;
+
     storyData.stories.forEach(function(story){
       stories.add({
         id: story.id,
@@ -52,7 +55,7 @@
     });
   </script>
   <script>
-    var parentEl, storiesByAuthor, buildListForOwner;
+    var buildListForOwner, parentEl, storiesByAuthor;
 
     buildListForOwner = function(owner, stories){
       var container, header, list;

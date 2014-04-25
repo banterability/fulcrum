@@ -15,18 +15,15 @@
       margin: 0 5px;
       padding: 5px;
     }
-    ul{
-      padding-left: 0;
-      list-style-position: inside;
-    }
-    li:nth-child(1){font-size:1.1em;color:rgba(0,0,0,0.9);}
-    li:nth-child(2){font-size:1.0em;color:rgba(0,0,0,0.7);}
-    li{font-size:0.9em; color:rgba(0,0,0,0.5);}
   </style>
 </head>
 <body>
 
   <div id="main"></div>
+  <div id="filters">
+    <a href="javascript:buildList(stories.models);">reset</a>
+
+  </div>
 
   <script src="vendor/underscore-min.js"></script>
   <script src="vendor/backbone-min.js"></script>
@@ -55,15 +52,22 @@
     });
   </script>
   <script>
-    var buildListForOwner, parentEl, storiesByAuthor;
 
-    buildListForOwner = function(owner, stories){
-      var container, header, list;
-      container = document.createElement('div');
-      container.classList.add('story-list');
+    var buildList, parentEl;
 
+    var container = document.createElement('div');
+    container.classList.add('story-list');
+
+    buildList = function(stories, title){
+      var header, list;
+
+      container.innerHTML = "";
       header = document.createElement('p');
-      header.textContent = "" + owner + "'s Stories:";
+      if(title){
+        header.textContent = title;
+      } else {
+        header.textContent = "All Stories:";
+      }
 
       list = document.createElement('ul');
       stories.forEach(function(story){
@@ -82,15 +86,52 @@
 
     parentEl = document.getElementById('main');
 
-    storiesByAuthor = stories.groupBy('author');
+    parentEl.appendChild(buildList(stories.models));
 
-    for (var property in storiesByAuthor){
-      if (storiesByAuthor.hasOwnProperty(property)) {
-        parentEl.appendChild(
-          buildListForOwner(property, storiesByAuthor[property])
-        );
-      }
+    var filterBy;
+
+    filterBy = function(collection, key, value){
+      criteria = {}
+      criteria[key] = value;
+      buildList(collection.where(criteria), "Stories where " + key + " = " + value);
     }
+
+    var setupFilters = function(collection){
+      filterList = document.getElementById('filters');
+      FILTERABLE_ATTRIBUTES = ['author','type'];
+      FILTERABLE_ATTRIBUTES.forEach(function(attr){
+        var selections = _.uniq(collection.pluck(attr));
+        filterList.appendChild(createFilterEl(attr, selections));
+      })
+    }
+
+    var createFilterEl = function(type, selections){
+      var filterContainer = document.createElement('div');
+      filterContainer.classList.add('filter-list');
+
+      header = document.createElement('p');
+      header.textContent = 'Filter by ' + type + ':';
+
+      listEl = document.createElement('ul');
+      selections.forEach(function(option){
+        var listItem, link;
+        link = document.createElement('a');
+        link.href = "javascript:filterBy(stories,'" + type + "','" + option + "');";
+        link.textContent = option;
+
+        listItem = document.createElement('li');
+        listItem.appendChild(link);
+
+        listEl.appendChild(listItem);
+      });
+
+      filterContainer.appendChild(header);
+      filterContainer.appendChild(listEl);
+
+      return filterContainer;
+    }
+
+    setupFilters(stories);
   </script>
 </body>
 </html>

@@ -21,7 +21,7 @@
 
   <div id="main"></div>
   <div id="filters">
-    <a href="javascript:buildList(stories.models);">reset</a>
+    <a href="javascript:App.render();">reset</a>
 
   </div>
 
@@ -29,6 +29,9 @@
   <script src="app.js"></script>
 
   <script>
+    App.init(storyData);
+    App.render();
+    App.renderFilters();
   </script>
 </body>
 </html>

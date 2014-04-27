@@ -7,7 +7,7 @@ usage:
 	@echo ''
 
 build:
-	cjsify -r src index.coffee -x App -o app.js
+	./node_modules/.bin/cjsify -r src index.coffee -x App -o app.js
 
 watch:
-	cjsify -w -r src index.coffee -x App -o app.js
+	./node_modules/.bin/cjsify -w -r src index.coffee -x App -o app.js

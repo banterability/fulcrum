@@ -8,16 +8,17 @@
     .bug{background-color: rgba(255, 0, 0, 0.1);}
     .feature{background-color: rgba(0, 255, 0, 0.1);}
     .chore{background-color: rgba(255, 255, 0, 0.1);}
-    .story-list{
-      display: inline-block;
-      vertical-align: top;
-      border-right: 2px solid rgba(0,0,0,0.2);
-      margin: 0 5px;
-      padding: 5px;
-    }
     #stories, #filters{
       display: inline-block;
       vertical-align: top;
+    }
+    #stories{
+      border-right: 3px solid rgba(0,0,0,0.1);
+      padding-right: 10px;
+      max-width: 300px;
+    }
+    #filters{
+      padding-left: 10px;
     }
   </style>
 </head>
@@ -26,6 +27,7 @@
   <div id="main">
     <div id="stories"></div>
     <div id="filters">
+      <h2>Filters</h2>
       <a href="javascript:App.render();">reset</a>
     </div>
   </div>

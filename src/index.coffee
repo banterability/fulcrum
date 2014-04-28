@@ -38,7 +38,7 @@ App = {
 }
 
 buildList = (stories, title="All Stories") ->
-  header = document.createElement 'p'
+  header = document.createElement 'h2'
   header.textContent = title
 
   list = document.createElement 'ul'
@@ -58,7 +58,7 @@ buildFilter = (type, selections) ->
   filterContainer = document.createElement 'div'
   filterContainer.classList.add 'filter-list'
 
-  header = document.createElement 'p'
+  header = document.createElement 'h3'
   header.textContent = "Filter by #{type}"
 
   list = document.createElement 'ul'

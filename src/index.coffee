@@ -26,8 +26,8 @@ App = {
     criteria[key] = value
     @render @stories.where(criteria), "Stories where #{key} = #{value}"
 
-  render: (collection=@stories.models)->
-    parentEl.appendChild buildList(collection)
+  render: (collection=@stories.models, title)->
+    parentEl.appendChild buildList(collection, title)
     return this
 
   renderFilters: ->

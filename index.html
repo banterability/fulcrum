@@ -11,18 +11,23 @@
     .story-list{
       display: inline-block;
       vertical-align: top;
-      border: 2px solid rgba(0,0,0,0.2);
+      border-right: 2px solid rgba(0,0,0,0.2);
       margin: 0 5px;
       padding: 5px;
+    }
+    #stories, #filters{
+      display: inline-block;
+      vertical-align: top;
     }
   </style>
 </head>
 <body>
 
-  <div id="main"></div>
-  <div id="filters">
-    <a href="javascript:App.render();">reset</a>
-
+  <div id="main">
+    <div id="stories"></div>
+    <div id="filters">
+      <a href="javascript:App.render();">reset</a>
+    </div>
   </div>
 
   <script src="stub_api_response.json"></script>

@@ -9,7 +9,7 @@ App = {
   init: (data) ->
     container = document.createElement 'div'
     container.classList.add 'story-list'
-    parentEl = document.getElementById 'main'
+    parentEl = document.getElementById 'stories'
 
     @stories = new StoryCollection
 

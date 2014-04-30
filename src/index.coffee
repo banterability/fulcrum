@@ -13,13 +13,13 @@ App = {
 
     @stories = new StoryCollection
 
-    for story in data.stories
+    for story in data
       @stories.add
         id: story.id
-        title: story.title
-        type: story.type
-        author: story.author.name
-        authorId: story.author.id
+        title: story.name
+        type: story.story_type
+        author: story.owners[0].name
+        authorId: story.owners[0].id
 
   filterBy: (key, value) ->
     criteria = {}

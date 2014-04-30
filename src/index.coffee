@@ -1,9 +1,13 @@
 {uniq} = require 'underscore'
+Hogan = require 'hogan.js'
 StoryCollection = require 'collections/stories'
+templates = require 'templates/index'
 
 container = null
 parentEl = null
 FILTERABLE_ATTRIBUTES = ['author', 'type']
+
+Hogan = Hogan
 
 App = {
   init: (data) ->

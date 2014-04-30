@@ -25,14 +25,28 @@
       list-style: none;
     }
     .story-list li{
-      padding: 5px;
+      padding: 5px 5px 15px 5px;
       margin-bottom: 5px;
+      position: relative;
     }
     .meta{
       color: rgba(0, 0, 0, 0.8);
       font-size: 12px;
+      /*text-transform: uppercase;*/
+    }
+    .meta div{
+      display: inline-block;
+      position: absolute;
+      bottom: 5px;
+    }
+    .meta-left{
+      left: 5px;
+    }
+    .meta-right{
+      bottom: 5px;
+      position: absolute;
+      right: 5px;
       text-align: right;
-      text-transform: uppercase;
     }
     .pipe{
       color: rgba(0,0,0,0.4);

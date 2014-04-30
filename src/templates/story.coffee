@@ -1,14 +1,17 @@
-module.exports = """
+module.exports = '''
   <li class="{{type}}">
     <p>{{title}}</p>
-    <p class="meta">
-      {{#points}}
-        <span class="points">{{points}}</span>
-        <span class="pipe">|</span>
-      {{/points}}
-      <a href="{{url}}">link</a>
-      <span class="pipe">|</span>
-      <span class="age">Last update {{age}}</span>
+    <div class="meta">
+      <div class="meta-left">
+        <a href="{{url}}">link</a>
+        {{#points}}
+          <span class="pipe">|</span>
+          <span class="points">{{points}}</span>
+        {{/points}}
+      </div>
+      <div class="meta-right">
+        <span class="age">Last update {{age}}</span>
+      </div>
     </p>
   </li>
-"""
+'''

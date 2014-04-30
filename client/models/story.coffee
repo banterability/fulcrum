@@ -1,10 +1,13 @@
 {extend, pick} = require 'underscore'
 Backbone = require 'backbone'
-{timeFromNow} = require 'helpers/time'
+{timeBetween, timeBetweenInWords} = require 'helpers/time'
 
 class StoryModel extends Backbone.Model
-  age: ->
-    timeFromNow @get 'updatedAt'
+  ageInWords: (relativeToDate = new Date()) ->
+    timeBetweenInWords relativeToDate, @get 'updatedAt'
+
+  age: (relativeToDate = new Date()) ->
+    timeBetween relativeToDate, @get 'updatedAt'
 
   points: ->
     estimate = @get('estimate')?.toString()
@@ -13,7 +16,7 @@ class StoryModel extends Backbone.Model
   toJSON: ->
     presentableAttributes = pick @attributes, 'author', 'title', 'type', 'url'
     extend {}, presentableAttributes,
-      age: @age()
+      age: @ageInWords()
       points: @points()
 
 module.exports = StoryModel

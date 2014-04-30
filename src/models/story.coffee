@@ -6,8 +6,14 @@ class StoryModel extends Backbone.Model
   age: ->
     timeFromNow @get 'updatedAt'
 
+  points: ->
+    estimate = @get('estimate')?.toString()
+    "#{estimate} pt." if estimate
+
   toJSON: ->
     presentableAttributes = pick @attributes, 'author', 'title', 'type', 'url'
-    extend {}, presentableAttributes, age: @age().toLowerCase()
+    extend {}, presentableAttributes,
+      age: @age().toLowerCase()
+      points: @points()
 
 module.exports = StoryModel

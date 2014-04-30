@@ -11,10 +11,10 @@ usage:
 .PHONY: dev-server
 
 build:
-	./node_modules/.bin/cjsify -r src index.coffee -x App -o app.js
+	./node_modules/.bin/cjsify -r client index.coffee -x App -o app.js
 
 watch:
-	./node_modules/.bin/cjsify -w -r src index.coffee -x App -o app.js
+	./node_modules/.bin/cjsify -w -r client index.coffee -x App -o app.js
 
 dev-server:
 	./node_modules/.bin/node-dev server/index.coffee

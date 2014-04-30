@@ -42,6 +42,11 @@ App = {
       filterList.appendChild buildFilter(attribute, selections)
 }
 
+App.Templates = {}
+
+for key, value of templates
+  App.Templates[key] = Hogan.compile(value)
+
 buildList = (stories, title="All Stories") ->
   header = document.createElement 'h2'
   header.textContent = title

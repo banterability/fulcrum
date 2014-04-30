@@ -19,6 +19,7 @@ getPivotalData = (config, cb) ->
         'owners'
         'labels'
         'updated_at'
+        'estimate'
       ].join(',')
     url: "https://www.pivotaltracker.com/services/v5/projects/#{projectId}/stories"
 

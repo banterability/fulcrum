@@ -1,7 +1,7 @@
 fulcrum
 =======
 
-[Pivotal Tracker][pivotal] status at a glance. Designed for phones, TVs, and low-bandwidth video conferences.
+[Pivotal Tracker](http://www.pivotaltracker.com/) status at a glance. Designed for phones, TVs, and low-bandwidth video conferences.
 
 
 Getting Started
@@ -18,5 +18,16 @@ Build client-side assets:
 make build
 ```
 
+Integrating with Pivotal Tracker
+--------------------------------
 
-[pivotal]:http://www.pivotaltracker.com/
+1. Create `server/config.json` with values for…
+
+* `apiToken`: Your Pivotal Tracker API token, available on [your profile](https://www.pivotaltracker.com/profile)
+* `projectId`: The ID of the project you want to load data for, visible in the URL
+
+2. Start up the development server:
+
+```bash
+make dev-server
+```

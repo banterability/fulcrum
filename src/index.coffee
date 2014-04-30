@@ -20,6 +20,7 @@ App = {
         type: story.story_type
         author: story.owners[0].name
         authorId: story.owners[0].id
+        updatedAt: new Date(story.updated_at)
 
   filterBy: (key, value) ->
     criteria = {}

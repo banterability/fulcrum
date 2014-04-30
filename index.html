@@ -40,13 +40,18 @@
     </div>
   </div>
 
-  <script src="stub_api_response.json"></script>
   <script src="app.js"></script>
 
   <script>
-    App.init(storyData);
-    App.render();
-    App.renderFilters();
+    var pivotalReq = new XMLHttpRequest();
+    pivotalReq.onload = function(){
+      App.init(JSON.parse(this.responseText));
+      App.render();
+      App.renderFilters();
+    }
+    pivotalReq.open('get', '/tracker', true);
+    pivotalReq.send();
+
   </script>
 </body>
 </html>

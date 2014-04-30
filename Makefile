@@ -1,23 +1,23 @@
 usage:
 	@echo ''
-	@echo 'Task            : Description'
-	@echo '--------------  : --------------'
-	@echo 'make build      : Compile client-side code'
-	@echo 'make watch      : Run build on client-side save'
-	@echo 'make dev-server : Start live-reloading app server'
-	@echo 'make server     : Build client-side assets and start server on port 5678'
+	@echo 'Task               : Description'
+	@echo '--------------     : --------------'
+	@echo 'make client        : Compile & package client JS'
+	@echo 'make server        : Start server on port 5678'
+	@echo 'make watch-client  : Recompile client JS on file change'
+	@echo 'make watch-server  : Reload server on file change'
 	@echo ''
 
-.PHONY: dev-server
+.PHONY: client server watch-client watch-server
 
-build:
+client:
 	./node_modules/.bin/cjsify -r client index.coffee -x App -o app.js
 
-watch:
+server:
+	./node_modules/.bin/coffee server/index.coffee
+
+watch-client:
 	./node_modules/.bin/cjsify -w -r client index.coffee -x App -o app.js
 
-dev-server:
+watch-server:
 	./node_modules/.bin/node-dev server/index.coffee
-
-server: build
-	./node_modules/.bin/coffee server/index.coffee

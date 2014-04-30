@@ -13,21 +13,14 @@ Install node modules:
 npm install
 ```
 
-Build client-side assets:
-```bash
-make build
-```
+Visit `make` for usage instructions.
+
 
 Integrating with Pivotal Tracker
 --------------------------------
 
-1. Create `server/config.json` with values for…
+Create `server/config.json` with values for…
 
 * `apiToken`: Your Pivotal Tracker API token, available on [your profile](https://www.pivotaltracker.com/profile)
 * `projectId`: The ID of the project you want to load data for, visible in the URL
 
-2. Start up the development server:
-
-```bash
-make dev-server
-```

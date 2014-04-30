@@ -13,7 +13,7 @@ class StoryModel extends Backbone.Model
   toJSON: ->
     presentableAttributes = pick @attributes, 'author', 'title', 'type', 'url'
     extend {}, presentableAttributes,
-      age: @age().toLowerCase()
+      age: @age()
       points: @points()
 
 module.exports = StoryModel

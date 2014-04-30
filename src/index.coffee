@@ -40,7 +40,12 @@ App = {
   renderFilters: ->
     filterList = document.getElementById 'filters'
     for attribute in FILTERABLE_ATTRIBUTES
-      selections = uniq @stories.pluck(attribute)
+      attributeValues = uniq @stories.pluck(attribute)
+      selections = []
+      for value in attributeValues
+        criteria = {}
+        criteria[attribute] = value
+        selections.push name: value, count: @stories.where(criteria).length
       filterList.appendChild buildFilter(attribute, selections)
 }
 
@@ -72,15 +77,14 @@ buildFilter = (type, selections) ->
   header.textContent = "Filter by #{type}"
 
   list = document.createElement 'ul'
-  selections.forEach (option) ->
-    link = document.createElement 'a'
-    link.href = "javascript:App.filterBy('#{type}','#{option}');"
-    link.textContent = option
-
-    listItem = document.createElement 'li'
-    listItem.appendChild link
-
-    list.appendChild listItem
+  listContents = []
+  for option in selections
+    {name, count} = option
+    listContents.push App.Templates.filterItem.render
+      key: type
+      value: name
+      count: count
+  list.innerHTML = listContents.join ""
 
   filterContainer.appendChild header
   filterContainer.appendChild list

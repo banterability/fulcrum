@@ -46,7 +46,17 @@ buildList = (stories, title="All Stories") ->
   stories.forEach (story) ->
     listItem = document.createElement 'li'
     listItem.classList.add story.get('type')
-    listItem.textContent = story.get('title')
+
+    titleEl = document.createElement 'p'
+    titleEl.textContent = story.get 'title'
+
+    metaEl = document.createElement 'p'
+    metaEl.classList.add 'meta'
+    metaEl.textContent = "Last update #{story.age().toLowerCase()}"
+
+    listItem.appendChild titleEl
+    listItem.appendChild metaEl
+
     list.appendChild listItem
 
   container.innerHTML = ""

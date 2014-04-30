@@ -10,7 +10,7 @@ timeFromNow = (compareDate) ->
 
   if diff > DAY
     difference = Math.floor(diff / DAY)
-    numString = "About #{difference} day #{if difference != 1 then 's' else ''}"
+    numString = "About #{difference} day#{if difference != 1 then 's' else ''}"
   else if diff > HOUR
     difference = Math.floor(diff / HOUR)
     numString = "About #{difference} hour#{if difference != 1 then 's' else ''}"

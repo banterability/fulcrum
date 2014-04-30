@@ -25,14 +25,21 @@ getPivotalData = (config, cb) ->
     cb err, body
 
 server = http.createServer (req, res) ->
-  if req.url == '/tracker'
+  if req.url == '/'
+    res.writeHead 200, 'Content-Type': 'text/html'
+    fs.readFile './index.html', encoding: 'utf-8', (err, data) ->
+      res.end data
+  else if req.url == '/app.js'
+    res.writeHead 200, 'Content-Type': 'text/javascript'
+    fs.readFile './app.js', encoding: 'utf-8', (err, data) ->
+      res.end data
+  else if req.url == '/tracker'
     res.writeHead 200, 'Content-Type': 'application/json'
     getPivotalData config, (err, data) ->
       res.end data
   else
     res.writeHead 404, 'Content-Type': 'text/plain'
     res.end 'nothing here :('
-  res.writeHead 404 unless req.url == '/tracker'
 
 server.listen 5678
 console.log 'server up on 5678…'

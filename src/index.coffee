@@ -25,6 +25,8 @@ App = {
         author: story.owners[0].name
         authorId: story.owners[0].id
         updatedAt: new Date(story.updated_at)
+        url: story.url
+        estimate: story.estimate
 
   filterBy: (key, value) ->
     criteria = {}

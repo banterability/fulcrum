@@ -7,7 +7,7 @@ class StoryModel extends Backbone.Model
     timeFromNow @get 'updatedAt'
 
   toJSON: ->
-    presentableAttributes = pick @attributes, 'author', 'title', 'type'
+    presentableAttributes = pick @attributes, 'author', 'title', 'type', 'url'
     extend {}, presentableAttributes, age: @age().toLowerCase()
 
 module.exports = StoryModel

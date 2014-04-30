@@ -52,21 +52,9 @@ buildList = (stories, title="All Stories") ->
   header.textContent = title
 
   list = document.createElement 'ul'
-  stories.forEach (story) ->
-    listItem = document.createElement 'li'
-    listItem.classList.add story.get('type')
-
-    titleEl = document.createElement 'p'
-    titleEl.textContent = story.get 'title'
-
-    metaEl = document.createElement 'p'
-    metaEl.classList.add 'meta'
-    metaEl.textContent = "Last update #{story.age().toLowerCase()}"
-
-    listItem.appendChild titleEl
-    listItem.appendChild metaEl
-
-    list.appendChild listItem
+  listContents = []
+  listContents.push App.Templates.story.render story.toJSON() for story in stories
+  list.innerHTML = listContents.join ""
 
   container.innerHTML = ""
   container.appendChild header

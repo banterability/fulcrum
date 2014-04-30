@@ -1,0 +1,3 @@
+- [ ] Compile Hogan templates server-side
+- [ ] Don't serve Hogan.js to clients
+- [ ] Handle static files

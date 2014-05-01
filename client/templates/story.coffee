@@ -1,6 +1,7 @@
 module.exports = '''
-  <li class="{{type}}" style="background-color: rgba(255,0,0,{{staleness}});">
+  <li class="{{type}}">
     <p>{{title}}</p>
+    <div class="stale-light {{staleClass}}"></div>
     <div class="meta">
       <div class="meta-left">
         <a href="{{url}}">link</a>

@@ -6,16 +6,12 @@ class StoryModel extends Backbone.Model
   ageInWords: (relativeToDate = new Date()) ->
     timeBetweenInWords relativeToDate, @get 'updatedAt'
 
-  staleness: (relativeToDate = new Date()) ->
-    staleAfter = 1000 * 60 * 60 * 24 * 7 # 7 days
-    age = timeBetween relativeToDate, @get 'updatedAt'
-    staleness = age / staleAfter
-    if staleness > 1
-      return 1
-    else if staleness < 0
-      return 0
-    else
-      return staleness
+  staleClass: (relativeToDate = new Date()) ->
+    sinceUpdate = timeBetween relativeToDate, @get 'updatedAt'
+    days = Math.round sinceUpdate / (1000 * 60 * 60 * 24)
+    days = 7 if days > 7
+    days = 0 if days < 0
+    "stale_for_#{days}_days"
 
   points: ->
     estimate = @get('estimate')?.toString()
@@ -26,6 +22,6 @@ class StoryModel extends Backbone.Model
     extend {}, presentableAttributes,
       age: @ageInWords()
       points: @points()
-      staleness: @staleness()
+      staleClass: @staleClass()
 
 module.exports = StoryModel

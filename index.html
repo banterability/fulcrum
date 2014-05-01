@@ -12,7 +12,7 @@
     }
     #stories{
       border-right: 3px solid rgba(0,0,0,0.1);
-      padding-right: 10px;
+      padding-right: 15px;
       width: 400px;
     }
     #filters{
@@ -23,14 +23,15 @@
       list-style: none;
     }
     .story-list li{
-      padding: 5px 5px 15px 5px;
-      margin-bottom: 5px;
+      padding: 3px 3px 15px 3px;
+      margin-bottom: 15px;
       position: relative;
       border: 1px solid rgba(0,0,0,0.1);
     }
     .story-list p{
       margin-top: 0;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      padding-right: 10px;
     }
     .meta{
       color: rgba(0, 0, 0, 0.6);
@@ -40,21 +41,36 @@
     .meta div{
       display: inline-block;
       position: absolute;
-      bottom: 5px;
+      padding: 3px;
+      bottom: 0;
     }
     .meta-left{
-      left: 5px;
+      left: 0px;
     }
     .meta-right{
-      bottom: 5px;
-      position: absolute;
-      right: 5px;
+      right: 10px;
       text-align: right;
+    }
+    .stale-light{
+      position: absolute;
+      height: 100%;
+      background-color: green;
+      width: 8px;
+      top: 0;
+      right: 0px;
     }
     .pipe{
       color: rgba(0,0,0,0.4);
       padding: 0 3px;
     }
+    .stale_for_0_days{ background-color: rgba(0, 255, 0, 0.1); }
+    .stale_for_1_days{ background-color: rgba(0, 255, 0, 0.2); }
+    .stale_for_2_days{ background-color: rgba(85, 255, 0, 0.2); }
+    .stale_for_3_days{ background-color: rgba(170, 255, 0, 0.3); }
+    .stale_for_4_days{ background-color: rgba(255, 255, 0, 0.3); }
+    .stale_for_5_days{ background-color: rgba(255, 170, 0, 0.4); color:rgba(0, 0, 0, 0.8); }
+    .stale_for_6_days{ background-color: rgba(255, 85, 0, 0.4); color:rgba(0, 0, 0, 0.8); }
+    .stale_for_7_days{ background-color: rgba(255, 0, 0, 0.5); color:rgba(0, 0, 0, 9); }
   </style>
 </head>
 <body>

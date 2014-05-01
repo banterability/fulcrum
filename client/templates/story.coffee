@@ -1,5 +1,5 @@
 module.exports = '''
-  <li class="{{type}}">
+  <li class="{{type}}" style="background-color: rgba(255,0,0,{{staleness}});">
     <p>{{title}}</p>
     <div class="meta">
       <div class="meta-left">

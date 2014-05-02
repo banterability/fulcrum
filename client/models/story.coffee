@@ -18,7 +18,7 @@ class StoryModel extends Backbone.Model
     "#{estimate} pt." if estimate
 
   toJSON: ->
-    presentableAttributes = pick @attributes, 'author', 'title', 'type', 'url'
+    presentableAttributes = pick @attributes, 'author', 'title', 'type', 'url', 'hasPair'
     extend {}, presentableAttributes,
       age: @ageInWords()
       points: @points()

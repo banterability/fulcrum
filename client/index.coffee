@@ -22,8 +22,9 @@ App = {
         id: story.id
         title: story.name
         type: story.story_type
-        author: story.owners[0].name
+        author: story.owners.map((owner) -> owner.initials).join(", ")
         authorId: story.owners[0].id
+        hasPair: story.owners.length > 1
         updatedAt: new Date(story.updated_at)
         url: story.url
         estimate: story.estimate
